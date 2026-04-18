@@ -55,12 +55,28 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
     throw createHttpError(404, "City not found");
   }
 
+  const cacheKey = `forecast:${city.name}`;
+  const cachedForecast = getCache(cacheKey);
+
+  if (cachedForecast) {
+    return res.json({
+      success: true,
+      city: city.name,
+      cached: true,
+      data: cachedForecast
+    });
+  }
+
   const forecast = await getForecastByCoords(city.lat, city.lon);
+  const formattedForecast = formatForecast(forecast);
+
+  setCache(cacheKey, formattedForecast);
 
   res.json({
     success: true,
     city: city.name,
-    data: formatForecast(forecast)
+    cached: false,
+    data: formattedForecast
   });
 }));
 
