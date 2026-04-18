@@ -31,3 +31,18 @@ paths:
       responses:
         "200":
           description: Cities response
+
+  /api/weather:
+    get:
+      summary: Get current weather by city
+      parameters:
+        - in: query
+          name: city
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Current weather response
+        "404":
+          description: City not found
