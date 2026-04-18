@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const requestCounter = require("./middleware/requestCounter");
+const simpleRateLimiter = require("./middleware/simpleRateLimiter");
 const indexRoute = require("./routes/index");
 const citiesRoute = require("./routes/cities");
 const weatherRoute = require("./routes/weather");
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(requestCounter);
+app.use(simpleRateLimiter);
 
 app.get("/health", (req, res) => {
   res.json({
