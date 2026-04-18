@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const indexRoute = require("./routes/index");
 const citiesRoute = require("./routes/cities");
 const weatherRoute = require("./routes/weather");
 const errorHandler = require("./middleware/errorHandler");
@@ -18,6 +19,7 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.use("/api", indexRoute);
 app.use("/api/cities", citiesRoute);
 app.use("/api/weather", weatherRoute);
 
