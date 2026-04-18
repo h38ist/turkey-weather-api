@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  title: TurkeyWeather API
+  version: 1.0.0
+  description: Türkiye şehirleri için hava durumu API dokümantasyonu
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        "200":
+          description: API is running
