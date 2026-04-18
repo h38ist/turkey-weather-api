@@ -24,11 +24,13 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Async route error handling
 - In-memory cache
 - TTL destekli cache
+- Request counter
+- Basit rate limiting
 
 ## Hedefler
 - Redis cache
-- Rate limiting
 - Swagger dokümantasyonu
+- Test dosyaları
 
 ## Endpointler
 - `GET /health`
