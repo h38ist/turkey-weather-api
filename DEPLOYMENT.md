@@ -1,14 +1,15 @@
 # Deployment Notes
 
-## Planned platforms
+## Recommended platform
 - Railway
-- Fly.io
 
 ## Required environment variables
 - PORT
 - OPENWEATHER_API_KEY
 
-## Planned checks
-- Health endpoint should respond
-- Weather endpoint should return valid data
-- Forecast endpoint should return formatted forecast data
+## Final deployment checklist
+- Set environment variables
+- Verify /health endpoint
+- Verify /api/weather?city=Istanbul
+- Verify /api/weather/forecast?city=Ankara
+- Add live demo link to README after deployment
