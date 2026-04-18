@@ -46,3 +46,18 @@ paths:
           description: Current weather response
         "404":
           description: City not found
+
+  /api/weather/forecast:
+    get:
+      summary: Get forecast by city
+      parameters:
+        - in: query
+          name: city
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Forecast response
+        "404":
+          description: City not found
