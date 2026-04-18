@@ -15,6 +15,7 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Şehir listesi
 - Bölgeye göre şehir filtreleme
 - Arama ile şehir filtreleme
+- limit ile sonuç sayısı kısıtlama
 - Şehre göre güncel hava durumu
 - Şehre göre tahmin verisi
 - Türkçe karakter normalizasyonu
@@ -33,5 +34,6 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - `GET /api/cities`
 - `GET /api/cities?region=ege`
 - `GET /api/cities?search=ist`
+- `GET /api/cities?limit=2`
 - `GET /api/weather?city=Istanbul`
 - `GET /api/weather/forecast?city=Ankara`
