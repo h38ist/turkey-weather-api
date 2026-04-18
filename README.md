@@ -26,10 +26,11 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - TTL destekli cache
 - Request counter
 - Basit rate limiting
+- İlk Swagger dosyası
 
 ## Hedefler
 - Redis cache
-- Swagger dokümantasyonu
+- Swagger endpoint entegrasyonu
 - Test dosyaları
 
 ## Endpointler
@@ -41,3 +42,6 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - `GET /api/cities?limit=2`
 - `GET /api/weather?city=Istanbul`
 - `GET /api/weather/forecast?city=Ankara`
+
+## Dokümantasyon
+- `docs/swagger.yaml`
