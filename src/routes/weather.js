@@ -21,3 +21,37 @@ router.get("/", async (req, res) => {
       message: "City not found"
     });
   }
+
+  const weather = await getCurrentWeatherByCoords(city.lat, city.lon);
+
+  res.json({
+    success: true,
+    city: city.name,
+    data: weather
+  });
+});
+
+router.get("/forecast", async (req, res) => {
+  const cityName = req.query.city;
+
+  const city = cities.find(
+    (item) => normalizeCity(item.name) === normalizeCity(cityName)
+  );
+
+  if (!city) {
+    return res.status(404).json({
+      success: false,
+      message: "City not found"
+    });
+  }
+
+  const forecast = await getForecastByCoords(city.lat, city.lon);
+
+  res.json({
+    success: true,
+    city: city.name,
+    data: forecast
+  });
+});
+
+module.exports = router;
