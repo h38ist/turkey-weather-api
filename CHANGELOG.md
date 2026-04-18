@@ -26,3 +26,8 @@
 - Cities filter builder added
 - Query examples added to root route
 - Readme expanded again
+
+## v0.4.0
+- Health response builder added
+- Default cities limit utility added
+- More test notes added
