@@ -30,6 +30,8 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Test notları
 - Deployment notları
 - Katkı rehberi
+- Changelog
+- MIT License
 
 ## Hedefler
 - Redis cache
@@ -52,3 +54,5 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - `tests/weather.test.md`
 - `DEPLOYMENT.md`
 - `CONTRIBUTING.md`
+- `CHANGELOG.md`
+- `LICENSE`
