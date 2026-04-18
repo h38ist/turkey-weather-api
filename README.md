@@ -16,6 +16,7 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Bölgeye göre şehir filtreleme
 - Arama ile şehir filtreleme
 - limit ile sonuç sayısı kısıtlama
+- Uygulanan filtreleri response içinde gösterme
 - Şehre göre güncel hava durumu
 - Şehre göre tahmin verisi
 - Türkçe karakter normalizasyonu
