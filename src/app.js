@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const citiesRoute = require("./routes/cities");
 
 const app = express();
 
@@ -14,5 +15,7 @@ app.get("/health", (req, res) => {
     message: "TurkeyWeather API is running"
   });
 });
+
+app.use("/api/cities", citiesRoute);
 
 module.exports = app;
