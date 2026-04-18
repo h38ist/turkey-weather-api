@@ -4,19 +4,16 @@ const {
   getCurrentWeatherByCoords,
   getForecastByCoords
 } = require("../services/weatherService");
-const normalizeCity = require("../utils/normalizeCity");
 const validateCityQuery = require("../middleware/validateCityQuery");
 const formatForecast = require("../utils/formatForecast");
 const formatCurrentWeather = require("../utils/formatCurrentWeather");
+const findCityByName = require("../utils/findCityByName");
 
 const router = express.Router();
 
 router.get("/", validateCityQuery, async (req, res) => {
   const cityName = req.query.city;
-
-  const city = cities.find(
-    (item) => normalizeCity(item.name) === normalizeCity(cityName)
-  );
+  const city = findCityByName(cities, cityName);
 
   if (!city) {
     return res.status(404).json({
@@ -36,10 +33,7 @@ router.get("/", validateCityQuery, async (req, res) => {
 
 router.get("/forecast", validateCityQuery, async (req, res) => {
   const cityName = req.query.city;
-
-  const city = cities.find(
-    (item) => normalizeCity(item.name) === normalizeCity(cityName)
-  );
+  const city = findCityByName(cities, cityName);
 
   if (!city) {
     return res.status(404).json({
