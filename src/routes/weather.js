@@ -12,6 +12,7 @@ const findCityByName = require("../utils/findCityByName");
 const asyncHandler = require("../utils/asyncHandler");
 const createHttpError = require("../utils/createHttpError");
 const buildCacheKey = require("../utils/buildCacheKey");
+const getCacheDurationMs = require("../utils/getCacheDurationMs");
 
 const router = express.Router();
 
@@ -38,7 +39,7 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
   const weather = await getCurrentWeatherByCoords(city.lat, city.lon);
   const formattedWeather = formatCurrentWeather(weather);
 
-  setCache(cacheKey, formattedWeather, 10 * 60 * 1000);
+  setCache(cacheKey, formattedWeather, getCacheDurationMs());
 
   res.json({
     success: true,
@@ -71,7 +72,7 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
   const forecast = await getForecastByCoords(city.lat, city.lon);
   const formattedForecast = formatForecast(forecast);
 
-  setCache(cacheKey, formattedForecast, 10 * 60 * 1000);
+  setCache(cacheKey, formattedForecast, getCacheDurationMs());
 
   res.json({
     success: true,
