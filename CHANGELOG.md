@@ -20,3 +20,9 @@
 - Cache key utility added
 - Cache duration utility added
 - Test notes expanded
+
+## v0.3.0
+- Weather response meta builder added
+- Cities filter builder added
+- Query examples added to root route
+- Readme expanded again
