@@ -1,6 +1,7 @@
 const express = require("express");
 const cities = require("../data/cities.json");
 const normalizeCity = require("../utils/normalizeCity");
+const sortCitiesByPlate = require("../utils/sortCitiesByPlate");
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.get("/", (req, res) => {
   const search = String(req.query.search || "").trim();
   const limit = Number(req.query.limit) || cities.length;
 
-  let filteredCities = cities;
+  let filteredCities = sortCitiesByPlate(cities);
 
   if (region) {
     filteredCities = filteredCities.filter(
