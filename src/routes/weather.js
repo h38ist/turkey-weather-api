@@ -5,10 +5,11 @@ const {
   getForecastByCoords
 } = require("../services/weatherService");
 const normalizeCity = require("../utils/normalizeCity");
+const validateCityQuery = require("../middleware/validateCityQuery");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", validateCityQuery, async (req, res) => {
   const cityName = req.query.city;
 
   const city = cities.find(
@@ -31,7 +32,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/forecast", async (req, res) => {
+router.get("/forecast", validateCityQuery, async (req, res) => {
   const cityName = req.query.city;
 
   const city = cities.find(
