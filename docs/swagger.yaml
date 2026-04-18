@@ -3,6 +3,7 @@ info:
   title: TurkeyWeather API
   version: 1.0.0
   description: Türkiye şehirleri için hava durumu API dokümantasyonu
+
 paths:
   /health:
     get:
@@ -10,3 +11,23 @@ paths:
       responses:
         "200":
           description: API is running
+
+  /api/cities:
+    get:
+      summary: Get cities list
+      parameters:
+        - in: query
+          name: region
+          schema:
+            type: string
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Cities response
