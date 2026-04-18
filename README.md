@@ -1,45 +1,21 @@
 # TurkeyWeather API
 
-Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
+Türkiye'deki 81 ilin hava durumu verilerini sunan REST API projesi.
 
-## Şu an olanlar
-- Express başlangıç yapısı
-- Health endpoint
-- Şehir veri dosyası
-- `/api`
-- `/api/cities`
-- `/api/weather?city=Istanbul`
-- `/api/weather/forecast?city=Ankara`
-
-## Desteklenen özellikler
-- Şehir listesi
+## Özellikler
+- 81 şehir veri desteği
+- Güncel hava durumu endpoint'i
+- Tahmin endpoint'i
 - Bölgeye göre şehir filtreleme
 - Arama ile şehir filtreleme
-- limit ile sonuç sayısı kısıtlama
-- Uygulanan filtreleri response içinde gösterme
-- Şehre göre güncel hava durumu
-- Şehre göre tahmin verisi
+- Limit desteği
 - Türkçe karakter normalizasyonu
-- city query doğrulama
-- Global error handler
-- Async route error handling
-- In-memory cache
+- Cache desteği
 - TTL destekli cache
-- Request counter
 - Basit rate limiting
-- İlk Swagger dosyası
-- Test notları
-- Deployment notları
-- Katkı rehberi
-- Changelog
-- MIT License
-- Root API içinde örnek sorgular
-- Health response builder
-
-## Hedefler
-- Redis cache
-- Swagger endpoint entegrasyonu
-- Gerçek test dosyaları
+- Swagger dokümantasyonu başlangıcı
+- Request counter
+- Global error handler
 
 ## Endpointler
 - `GET /health`
@@ -47,15 +23,19 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - `GET /api/cities`
 - `GET /api/cities?region=ege`
 - `GET /api/cities?search=ist`
-- `GET /api/cities?limit=2`
+- `GET /api/cities?limit=5`
 - `GET /api/weather?city=Istanbul`
 - `GET /api/weather/forecast?city=Ankara`
 
-## Dokümantasyon
+## Ortam Değişkenleri
+- `PORT`
+- `OPENWEATHER_API_KEY`
+
+## Dokümantasyon Dosyaları
 - `docs/swagger.yaml`
-- `tests/cities.test.md`
-- `tests/weather.test.md`
 - `DEPLOYMENT.md`
-- `CONTRIBUTING.md`
 - `CHANGELOG.md`
-- `LICENSE`
+- `CONTRIBUTING.md`
+
+## Geliştirme Notu
+Bu proje GitHub üzerinde küçük ve anlamlı commitlerle geliştirilmiştir.
