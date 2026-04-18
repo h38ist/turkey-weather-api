@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   const region = String(req.query.region || "").trim().toLowerCase();
   const search = String(req.query.search || "").trim();
+  const limit = Number(req.query.limit) || cities.length;
 
   let filteredCities = cities;
 
@@ -21,6 +22,8 @@ router.get("/", (req, res) => {
       (city) => normalizeCity(city.name).includes(normalizeCity(search))
     );
   }
+
+  filteredCities = filteredCities.slice(0, limit);
 
   res.json({
     success: true,
