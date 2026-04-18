@@ -6,6 +6,7 @@ const {
 } = require("../services/weatherService");
 const normalizeCity = require("../utils/normalizeCity");
 const validateCityQuery = require("../middleware/validateCityQuery");
+const formatForecast = require("../utils/formatForecast");
 
 const router = express.Router();
 
@@ -51,7 +52,7 @@ router.get("/forecast", validateCityQuery, async (req, res) => {
   res.json({
     success: true,
     city: city.name,
-    data: forecast
+    data: formatForecast(forecast)
   });
 });
 
