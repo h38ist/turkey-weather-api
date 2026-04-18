@@ -9,6 +9,7 @@ const formatForecast = require("../utils/formatForecast");
 const formatCurrentWeather = require("../utils/formatCurrentWeather");
 const findCityByName = require("../utils/findCityByName");
 const asyncHandler = require("../utils/asyncHandler");
+const createHttpError = require("../utils/createHttpError");
 
 const router = express.Router();
 
@@ -17,10 +18,7 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
   const city = findCityByName(cities, cityName);
 
   if (!city) {
-    return res.status(404).json({
-      success: false,
-      message: "City not found"
-    });
+    throw createHttpError(404, "City not found");
   }
 
   const weather = await getCurrentWeatherByCoords(city.lat, city.lon);
@@ -37,10 +35,7 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
   const city = findCityByName(cities, cityName);
 
   if (!city) {
-    return res.status(404).json({
-      success: false,
-      message: "City not found"
-    });
+    throw createHttpError(404, "City not found");
   }
 
   const forecast = await getForecastByCoords(city.lat, city.lon);
