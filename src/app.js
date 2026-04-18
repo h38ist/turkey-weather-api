@@ -7,6 +7,7 @@ const indexRoute = require("./routes/index");
 const citiesRoute = require("./routes/cities");
 const weatherRoute = require("./routes/weather");
 const errorHandler = require("./middleware/errorHandler");
+const buildHealthResponse = require("./utils/buildHealthResponse");
 
 const app = express();
 
@@ -17,10 +18,7 @@ app.use(requestCounter);
 app.use(simpleRateLimiter);
 
 app.get("/health", (req, res) => {
-  res.json({
-    success: true,
-    message: "TurkeyWeather API is running"
-  });
+  res.json(buildHealthResponse());
 });
 
 app.use("/api", indexRoute);
