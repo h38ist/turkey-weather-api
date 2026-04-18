@@ -7,3 +7,4 @@
 - GET /api/cities?limit=2 should limit results
 - Cities response should include applied filters
 - Cities should be sorted by plate number
+- Cities endpoint should use default limit when limit is missing
