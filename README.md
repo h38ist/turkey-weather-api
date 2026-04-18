@@ -33,6 +33,7 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Katkı rehberi
 - Changelog
 - MIT License
+- Root API içinde örnek sorgular
 
 ## Hedefler
 - Redis cache
