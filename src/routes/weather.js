@@ -1,6 +1,7 @@
 const express = require("express");
 const cities = require("../data/cities.json");
 const { getCurrentWeatherByCoords } = require("../services/weatherService");
+const normalizeCity = require("../utils/normalizeCity");
 
 const router = express.Router();
 
@@ -8,7 +9,7 @@ router.get("/", async (req, res) => {
   const cityName = req.query.city;
 
   const city = cities.find(
-    (item) => item.name.toLowerCase() === String(cityName || "").toLowerCase()
+    (item) => normalizeCity(item.name) === normalizeCity(cityName)
   );
 
   if (!city) {
