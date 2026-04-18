@@ -11,6 +11,7 @@ const formatCurrentWeather = require("../utils/formatCurrentWeather");
 const findCityByName = require("../utils/findCityByName");
 const asyncHandler = require("../utils/asyncHandler");
 const createHttpError = require("../utils/createHttpError");
+const buildCacheKey = require("../utils/buildCacheKey");
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
     throw createHttpError(404, "City not found");
   }
 
-  const cacheKey = `current:${city.name}`;
+  const cacheKey = buildCacheKey("current", city.name);
   const cachedWeather = getCache(cacheKey);
 
   if (cachedWeather) {
@@ -55,7 +56,7 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
     throw createHttpError(404, "City not found");
   }
 
-  const cacheKey = `forecast:${city.name}`;
+  const cacheKey = buildCacheKey("forecast", city.name);
   const cachedForecast = getCache(cacheKey);
 
   if (cachedForecast) {
