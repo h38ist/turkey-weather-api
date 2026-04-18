@@ -9,3 +9,4 @@
 - Cached forecast response should include cached=true
 - Weather response should return formatted payload
 - Forecast response should return formatted forecast payload
+- Weather response should include city and cached metadata
