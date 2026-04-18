@@ -1,0 +1,5 @@
+[
+  { "name": "Istanbul", "plate": 34, "region": "Marmara", "lat": 41.0082, "lon": 28.9784 },
+  { "name": "Ankara", "plate": 6, "region": "Ic Anadolu", "lat": 39.9334, "lon": 32.8597 },
+  { "name": "Izmir", "plate": 35, "region": "Ege", "lat": 38.4237, "lon": 27.1428 }
+]
