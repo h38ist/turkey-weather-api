@@ -7,11 +7,17 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - Health endpoint
 - Şehir veri dosyası
 - `/api/cities` endpoint'i
+- `/api/weather?city=Istanbul`
+- `/api/weather/forecast?city=Ankara`
 
 ## Hedefler
-- Şehre göre hava durumu sorgulama
-- 5 günlük tahmin endpoint'i
 - Türkçe karakter normalizasyonu
 - Redis cache
 - Rate limiting
 - Swagger dokümantasyonu
+
+## Endpointler
+- `GET /health`
+- `GET /api/cities`
+- `GET /api/weather?city=Istanbul`
+- `GET /api/weather/forecast?city=Ankara`
