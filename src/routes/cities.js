@@ -2,6 +2,7 @@ const express = require("express");
 const cities = require("../data/cities.json");
 const normalizeCity = require("../utils/normalizeCity");
 const sortCitiesByPlate = require("../utils/sortCitiesByPlate");
+const buildCitiesFilters = require("../utils/buildCitiesFilters");
 
 const router = express.Router();
 
@@ -29,11 +30,7 @@ router.get("/", (req, res) => {
   res.json({
     success: true,
     count: filteredCities.length,
-    filters: {
-      region: region || null,
-      search: search || null,
-      limit
-    },
+    filters: buildCitiesFilters(region, search, limit),
     data: filteredCities
   });
 });
