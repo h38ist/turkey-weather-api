@@ -29,6 +29,11 @@ router.get("/", (req, res) => {
   res.json({
     success: true,
     count: filteredCities.length,
+    filters: {
+      region: region || null,
+      search: search || null,
+      limit
+    },
     data: filteredCities
   });
 });
