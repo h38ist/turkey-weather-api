@@ -29,6 +29,7 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - İlk Swagger dosyası
 - Test notları
 - Deployment notları
+- Katkı rehberi
 
 ## Hedefler
 - Redis cache
@@ -50,3 +51,4 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - `tests/cities.test.md`
 - `tests/weather.test.md`
 - `DEPLOYMENT.md`
+- `CONTRIBUTING.md`
