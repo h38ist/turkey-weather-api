@@ -13,6 +13,7 @@ const asyncHandler = require("../utils/asyncHandler");
 const createHttpError = require("../utils/createHttpError");
 const buildCacheKey = require("../utils/buildCacheKey");
 const getCacheDurationMs = require("../utils/getCacheDurationMs");
+const buildWeatherResponseMeta = require("../utils/buildWeatherResponseMeta");
 
 const router = express.Router();
 
@@ -30,8 +31,7 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
   if (cachedWeather) {
     return res.json({
       success: true,
-      city: city.name,
-      cached: true,
+      ...buildWeatherResponseMeta(city.name, true),
       data: cachedWeather
     });
   }
@@ -43,8 +43,7 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
 
   res.json({
     success: true,
-    city: city.name,
-    cached: false,
+    ...buildWeatherResponseMeta(city.name, false),
     data: formattedWeather
   });
 }));
@@ -63,8 +62,7 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
   if (cachedForecast) {
     return res.json({
       success: true,
-      city: city.name,
-      cached: true,
+      ...buildWeatherResponseMeta(city.name, true),
       data: cachedForecast
     });
   }
@@ -76,8 +74,7 @@ router.get("/forecast", validateCityQuery, asyncHandler(async (req, res) => {
 
   res.json({
     success: true,
-    city: city.name,
-    cached: false,
+    ...buildWeatherResponseMeta(city.name, false),
     data: formattedForecast
   });
 }));
