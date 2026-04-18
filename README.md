@@ -22,6 +22,8 @@ Türkiye'deki illerin hava durumu verilerini sunacak REST API projesi.
 - city query doğrulama
 - Global error handler
 - Async route error handling
+- In-memory cache
+- TTL destekli cache
 
 ## Hedefler
 - Redis cache
