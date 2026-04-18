@@ -2,19 +2,26 @@ openapi: 3.0.0
 info:
   title: TurkeyWeather API
   version: 1.0.0
-  description: Türkiye şehirleri için hava durumu API dokümantasyonu
+  description: Türkiye'deki 81 il için hava durumu API dokümantasyonu
 
 paths:
   /health:
     get:
-      summary: Health check endpoint
+      summary: Health check
       responses:
         "200":
           description: API is running
 
+  /api:
+    get:
+      summary: API overview
+      responses:
+        "200":
+          description: Overview response
+
   /api/cities:
     get:
-      summary: Get cities list
+      summary: List cities
       parameters:
         - in: query
           name: region
@@ -30,11 +37,11 @@ paths:
             type: integer
       responses:
         "200":
-          description: Cities response
+          description: Cities list response
 
   /api/weather:
     get:
-      summary: Get current weather by city
+      summary: Current weather by city
       parameters:
         - in: query
           name: city
@@ -44,12 +51,14 @@ paths:
       responses:
         "200":
           description: Current weather response
+        "400":
+          description: city query parameter is required
         "404":
           description: City not found
 
   /api/weather/forecast:
     get:
-      summary: Get forecast by city
+      summary: Forecast by city
       parameters:
         - in: query
           name: city
@@ -59,5 +68,7 @@ paths:
       responses:
         "200":
           description: Forecast response
+        "400":
+          description: city query parameter is required
         "404":
           description: City not found
