@@ -3,13 +3,14 @@ const cities = require("../data/cities.json");
 const normalizeCity = require("../utils/normalizeCity");
 const sortCitiesByPlate = require("../utils/sortCitiesByPlate");
 const buildCitiesFilters = require("../utils/buildCitiesFilters");
+const getDefaultCitiesLimit = require("../utils/getDefaultCitiesLimit");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
   const region = String(req.query.region || "").trim().toLowerCase();
   const search = String(req.query.search || "").trim();
-  const limit = Number(req.query.limit) || cities.length;
+  const limit = Number(req.query.limit) || getDefaultCitiesLimit(cities.length);
 
   let filteredCities = sortCitiesByPlate(cities);
 
