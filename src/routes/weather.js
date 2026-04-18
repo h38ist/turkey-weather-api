@@ -4,6 +4,7 @@ const {
   getCurrentWeatherByCoords,
   getForecastByCoords
 } = require("../services/weatherService");
+const { getCache, setCache } = require("../services/cacheService");
 const validateCityQuery = require("../middleware/validateCityQuery");
 const formatForecast = require("../utils/formatForecast");
 const formatCurrentWeather = require("../utils/formatCurrentWeather");
@@ -21,12 +22,28 @@ router.get("/", validateCityQuery, asyncHandler(async (req, res) => {
     throw createHttpError(404, "City not found");
   }
 
+  const cacheKey = `current:${city.name}`;
+  const cachedWeather = getCache(cacheKey);
+
+  if (cachedWeather) {
+    return res.json({
+      success: true,
+      city: city.name,
+      cached: true,
+      data: cachedWeather
+    });
+  }
+
   const weather = await getCurrentWeatherByCoords(city.lat, city.lon);
+  const formattedWeather = formatCurrentWeather(weather);
+
+  setCache(cacheKey, formattedWeather);
 
   res.json({
     success: true,
     city: city.name,
-    data: formatCurrentWeather(weather)
+    cached: false,
+    data: formattedWeather
   });
 }));
 
